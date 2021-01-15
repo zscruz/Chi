@@ -126,5 +126,24 @@ namespace Zhaxx.Chi
 
             return numerator / (data.Count() - 1);
         }
+
+
+        /// <summary>
+        /// Calculates the sample standard deviation of the passed in data.
+        /// </summary>
+        /// <param name="data">Collection of data.</param>
+        /// <returns>Returns the sample standard deviation or null if collection is null or less than 2 values.</returns>
+        /// <remarks>Formula: s = Square-root(sample-variance)</remarks>
+        public static double? SampleStandardDeviation(IEnumerable<double> data)
+        {
+            if (data == null || data.Count() < 2)
+            {
+                return null;
+            }
+
+            var variance = SampleVariance(data);
+
+            return Math.Sqrt(variance.Value);
+        }
     }
 }

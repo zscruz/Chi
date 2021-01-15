@@ -265,5 +265,49 @@ namespace Zhaxx.Chi.UnitTests
 
             Assert.Equal(expectedVariance, actualVariance);
         }
+
+        [Fact]
+        public void SampleStandardDeviation_WhenCollectionIsNull_ShouldReturnNull()
+        {
+            var standardDeviation = Stat.SampleStandardDeviation(null);
+
+            Assert.Null(standardDeviation);
+        }
+
+        [Fact]
+        public void SampleStandardDeviation_WhenCollectionIsEmpty_ShouldReturnNull()
+        {
+            var emptyList = new List<double>();
+
+            double? standardDeviation = Stat.SampleStandardDeviation(emptyList);
+
+            Assert.Null(standardDeviation);
+        }
+
+        [Theory]
+        [InlineData(new double[] { -1.0 })]
+        [InlineData(new double[] { 0.0 })]
+        [InlineData(new double[] { 1.0 })]
+        [InlineData(new double[] { 5.1234 })]
+        [InlineData(new double[] { 42.0 })]
+        public void SampleStandardDeviation_WhenCollectionHasLessThan2Elements_ShouldReturnNull(double[] testData)
+        {
+            var standardDeviation = Stat.SampleStandardDeviation(testData);
+
+            Assert.Null(standardDeviation);
+        }
+
+
+        [Theory]
+        [InlineData(new double[] { 1.0, 1.0 }, 0)]
+        [InlineData(new double[] { 1.0, 1.0, 1.0, 1.0, 1.0 }, 0)]
+        [InlineData(new double[] { 1.0, 2.0, 3.0, 4.0, 5.0 }, 1.581)]
+        [InlineData(new double[] { -1.0, 2.0, -3.0, 4.0, -5.0 }, 3.647)]
+        public void SampleStandardDeviation_WhenCollectionHasManyElements(double[] testData, double expectedDeviation)
+        {
+            var actualDeviation = Stat.SampleStandardDeviation(testData).Value;
+
+            Assert.Equal(expectedDeviation, actualDeviation, 3);
+        }
     }
 }
