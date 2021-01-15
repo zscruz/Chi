@@ -53,43 +53,21 @@ namespace Zhaxx.Chi
         /// <summary>
         /// Calculates the mode of the passed in data.
         /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
+        /// <param name="data">Collection of data.</param>
+        /// <returns>Returns the mode.</returns>
         /// <remarks>The mode is the data value that has the highest frequency. This assumes that the data collection is unimodal.</remarks>
         public static double? Mode(IEnumerable<double> data)
         {
-            return null;
-        }
+            if (data == null || !data.Any())
+            {
+                return null;
+            }
 
-        /// <summary>
-        /// Calculates the variance of the passed in data.
-        /// </summary>
-        /// <param name="data">Collection of data.</param>
-        /// <returns>Returns the calculated variance value. Returns null if the collection is empty.</returns>
-        /// <remarks>Fromula: σ^2 = Σ((x - μ)^2) / n </remarks>
-        public static double? Variance(IEnumerable<double> data)
-        {
-            return null;
-        }
+            var groups = data.GroupBy(d => d);
+            int maxCount = groups.Max(g => g.Count());
+            double mode = groups.First(g => g.Count() == maxCount).Key;
 
-        /// <summary>
-        /// Finds the largest value in the collection. 
-        /// </summary>
-        /// <param name="data">Collection of data.</param>
-        /// <returns>Returns the maximum value of the collection. Returns null for an empty collection.</returns>
-        public static double? Max(IEnumerable<double> data)
-        {
-            return null;
-        }
-
-        /// <summary>
-        /// Finds the smallest value in the collection.
-        /// </summary>
-        /// <param name="data">Collection of data.</param>
-        /// <returns>Returns the minimum value of the collection. Returns null for an empty collection.</returns>
-        public static double? Min(IEnumerable<double> data)
-        {
-            return null;
+            return mode;
         }
     }
 }

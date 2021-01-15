@@ -61,9 +61,9 @@ namespace Zhaxx.Chi.UnitTests
         {
             var emptyList = new List<double>();
 
-            var mean = Stat.Mean(emptyList);
+            double? median = Stat.Mean(emptyList);
 
-            Assert.Null(mean);
+            Assert.Null(median);
         }
 
         [Theory]
@@ -97,6 +97,49 @@ namespace Zhaxx.Chi.UnitTests
             var actualMedian = Stat.Median(testData);
 
             Assert.Equal(expectedMedian, actualMedian);
+        }
+
+        [Fact]
+        public void Mode_WhenCollectionIsNull_ShouldReturnNull()
+        {
+            var mode = Stat.Mode(null);
+
+            Assert.Null(mode);
+        }
+
+        [Fact]
+        public void Mode_WhenCollectionIsEmpty_ShouldReturnNull()
+        {
+            var emptyList = new List<double>();
+
+            double? mode = Stat.Mode(emptyList);
+
+            Assert.Null(mode);
+        }
+
+
+        [Theory]
+        [InlineData(new double[] { 1.0, 1.0}, 1.0)]
+        [InlineData(new double[] { -1.0, -1.0, 1.0, 1.0}, -1.0)]
+        [InlineData(new double[] { 3.0, 2.0, 1.0, 4.0, 1.0}, 1.0)]
+        public void Mode_WhenCollectionHasManyElements(double[] testData, double expectedMode)
+        {
+            var actualMode = Stat.Mode(testData);
+
+            Assert.Equal(expectedMode, actualMode);
+        }
+
+        [Theory]
+        [InlineData(new double[] { -1.0 }, -1.0)]
+        [InlineData(new double[] { 0.0 }, 0.0)]
+        [InlineData(new double[] { 1.0 }, 1.0)]
+        [InlineData(new double[] { 5.1234 }, 5.1234)]
+        [InlineData(new double[] { 42.0 }, 42.0)]
+        public void Mode_WhenCollectionHasOnlyOneElement(double[] testData, double expectedMode)
+        {
+            var actualMode = Stat.Mode(testData);
+
+            Assert.Equal(expectedMode, actualMode);
         }
     }
 }
