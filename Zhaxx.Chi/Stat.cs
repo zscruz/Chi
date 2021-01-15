@@ -69,5 +69,25 @@ namespace Zhaxx.Chi
 
             return mode;
         }
+
+        /// <summary>
+        /// Calculates the population variance of the passed in data.
+        /// </summary>
+        /// <param name="data">Collection of data.</param>
+        /// <returns>Returns the population variance or null if collection is null or less than 2 values.</returns>
+        /// <remarks>Formula: σ^2 = [ Σ(x - μ)^2 / n ]</remarks>
+        public static double? PopulationVariance(IEnumerable<double> data)
+        {
+            if (data == null || data.Count() < 2)
+            {
+                return null;
+            }
+
+            var mean = Mean(data).Value;
+
+            var numerator = data.Sum(d => Math.Pow(d - mean, 2));
+
+            return numerator / data.Count();
+        }
     }
 }

@@ -117,6 +117,18 @@ namespace Zhaxx.Chi.UnitTests
             Assert.Null(mode);
         }
 
+        [Theory]
+        [InlineData(new double[] { -1.0 }, -1.0)]
+        [InlineData(new double[] { 0.0 }, 0.0)]
+        [InlineData(new double[] { 1.0 }, 1.0)]
+        [InlineData(new double[] { 5.1234 }, 5.1234)]
+        [InlineData(new double[] { 42.0 }, 42.0)]
+        public void Mode_WhenCollectionHasOnlyOneElement(double[] testData, double expectedMode)
+        {
+            var actualMode = Stat.Mode(testData);
+
+            Assert.Equal(expectedMode, actualMode);
+        }
 
         [Theory]
         [InlineData(new double[] { 1.0, 1.0}, 1.0)]
@@ -129,17 +141,45 @@ namespace Zhaxx.Chi.UnitTests
             Assert.Equal(expectedMode, actualMode);
         }
 
-        [Theory]
-        [InlineData(new double[] { -1.0 }, -1.0)]
-        [InlineData(new double[] { 0.0 }, 0.0)]
-        [InlineData(new double[] { 1.0 }, 1.0)]
-        [InlineData(new double[] { 5.1234 }, 5.1234)]
-        [InlineData(new double[] { 42.0 }, 42.0)]
-        public void Mode_WhenCollectionHasOnlyOneElement(double[] testData, double expectedMode)
+        [Fact]
+        public void PopulationVariance_WhenCollectionIsNull_ShouldReturnNull()
         {
-            var actualMode = Stat.Mode(testData);
+            var variance = Stat.PopulationVariance(null);
 
-            Assert.Equal(expectedMode, actualMode);
+            Assert.Null(variance);
+        }
+
+        [Fact]
+        public void PopulationVariance_WhenCollectionIsEmpty_ShouldReturnNull()
+        {
+            var emptyList = new List<double>();
+
+            double? variance = Stat.PopulationVariance(emptyList);
+
+            Assert.Null(variance);
+        }
+
+        [Theory]
+        [InlineData(new double[] { -1.0 })]
+        [InlineData(new double[] { 0.0 })]
+        [InlineData(new double[] { 1.0 })]
+        [InlineData(new double[] { 5.1234 })]
+        [InlineData(new double[] { 42.0 })]
+        public void PopulationVariance_WhenCollectionHasLessThan2Elements_ShouldReturnNull(double[] testData)
+        {
+            var variance = Stat.PopulationVariance(testData);
+
+            Assert.Null(variance);
+        }
+
+        [Theory]
+        [InlineData(new double[] { 1.0, 1.0 }, 0)]
+        [InlineData(new double[] { 1.0, 2.0, 3.0, 4.0, 5.0}, 2.0)]
+        public void PopulationVariance_WhenCollectionHasManyElements(double[] testData, double expectedVariance)
+        {
+            var actualVariance = Stat.PopulationVariance(testData);
+
+            Assert.Equal(expectedVariance, actualVariance);
         }
     }
 }
