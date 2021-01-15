@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -88,6 +87,24 @@ namespace Zhaxx.Chi
             var numerator = data.Sum(d => Math.Pow(d - mean, 2));
 
             return numerator / data.Count();
+        }
+
+        /// <summary>
+        /// Calculates the population standard deviation of the passed in data.
+        /// </summary>
+        /// <param name="data">Collection of data.</param>
+        /// <returns>Returns the population standard deviation or null if collection is null or less than 2 values.</returns>
+        /// <remarks>Formula: Square-root(population-variance)</remarks>
+        public static double? PopulationStandardDeviation(IEnumerable<double> data)
+        {
+            if (data == null || data.Count() < 2)
+            {
+                return null;
+            }
+
+            var variance = PopulationVariance(data);
+
+            return Math.Sqrt(variance.Value);
         }
     }
 }
