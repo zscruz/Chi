@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -224,6 +223,47 @@ namespace Zhaxx.Chi.UnitTests
             var actualDeviation = Stat.PopulationStandardDeviation(testData).Value;
 
             Assert.Equal(expectedDeviation, actualDeviation, 3);
+        }
+
+        [Fact]
+        public void SampleVariance_WhenCollectionIsNull_ShouldReturnNull()
+        {
+            var variance = Stat.SampleVariance(null);
+
+            Assert.Null(variance);
+        }
+
+        [Fact]
+        public void SampleVariance_WhenCollectionIsEmpty_ShouldReturnNull()
+        {
+            var emptyList = new List<double>();
+
+            double? variance = Stat.SampleVariance(emptyList);
+
+            Assert.Null(variance);
+        }
+
+        [Theory]
+        [InlineData(new double[] { -1.0 })]
+        [InlineData(new double[] { 0.0 })]
+        [InlineData(new double[] { 1.0 })]
+        [InlineData(new double[] { 5.1234 })]
+        [InlineData(new double[] { 42.0 })]
+        public void SampleVariance_WhenCollectionHasLessThan2Elements_ShouldReturnNull(double[] testData)
+        {
+            var variance = Stat.SampleVariance(testData);
+
+            Assert.Null(variance);
+        }
+
+        [Theory]
+        [InlineData(new double[] { 1.0, 1.0 }, 0)]
+        [InlineData(new double[] { 1.0, 2.0, 3.0, 4.0, 5.0 }, 2.5)]
+        public void SampleVariance_WhenCollectionHasManyElements(double[] testData, double expectedVariance)
+        {
+            var actualVariance = Stat.SampleVariance(testData);
+
+            Assert.Equal(expectedVariance, actualVariance);
         }
     }
 }

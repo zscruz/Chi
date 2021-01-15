@@ -94,7 +94,7 @@ namespace Zhaxx.Chi
         /// </summary>
         /// <param name="data">Collection of data.</param>
         /// <returns>Returns the population standard deviation or null if collection is null or less than 2 values.</returns>
-        /// <remarks>Formula: Square-root(population-variance)</remarks>
+        /// <remarks>Formula: σ = Square-root(population-variance)</remarks>
         public static double? PopulationStandardDeviation(IEnumerable<double> data)
         {
             if (data == null || data.Count() < 2)
@@ -105,6 +105,26 @@ namespace Zhaxx.Chi
             var variance = PopulationVariance(data);
 
             return Math.Sqrt(variance.Value);
+        }
+
+        /// <summary>
+        /// Calculates the standard variance of the passed in data.
+        /// </summary>
+        /// <param name="data">Collection of data.</param>
+        /// <returns>Returns the sample variance or null if collection is null or less than 2 values.</returns>
+        /// <remarks>Formula: s^2 = [ Σ(x - μ)^2 / n - 1 ]</remarks>
+        public static double? SampleVariance(IEnumerable<double> data)
+        {
+            if (data == null || data.Count() < 2)
+            {
+                return null;
+            }
+
+            var mean = Mean(data).Value;
+
+            var numerator = data.Sum(d => Math.Pow(d - mean, 2));
+
+            return numerator / (data.Count() - 1);
         }
     }
 }
