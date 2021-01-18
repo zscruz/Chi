@@ -2,6 +2,16 @@
 
     <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <Authors>zscruz</Authors>
+    <Company />
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>2021</Copyright>
+    <Description>A simple statistics library for .NET projects</Description>
+    <PackageProjectUrl>https://github.com/zscruz/Chi</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/zscruz/Chi</RepositoryUrl>
+    <PackageTags>Statistics Stat Math Chi</PackageTags>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageReleaseNotes>This statistics packages contains functions for calculating the mean, median, mode, sample/population variation, and sample/population standard deviation.</PackageReleaseNotes>
     </PropertyGroup>
     
     <ItemGroup>
