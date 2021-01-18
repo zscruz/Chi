@@ -14,7 +14,7 @@ namespace Zhaxx.Chi
         /// <remarks>Formula: Mean = Σ(x) / n where n is the number of data values.</remarks>
         public static double? Mean(IEnumerable<double> data)
         {
-            if (data == null || !data.Any())
+            if (data.IsNullOrEmpty())
             {
                 return null;
             }
@@ -29,7 +29,7 @@ namespace Zhaxx.Chi
         /// <returns>Returns the median value. Returns null if collection is empty.</returns>
         public static double? Median(IEnumerable<double> data)
         {
-            if (data == null || !data.Any())
+            if (data.IsNullOrEmpty())
             {
                 return null;
             }
@@ -57,7 +57,7 @@ namespace Zhaxx.Chi
         /// <remarks>The mode is the data value that has the highest frequency. This assumes that the data collection is unimodal.</remarks>
         public static double? Mode(IEnumerable<double> data)
         {
-            if (data == null || !data.Any())
+            if (data.IsNullOrEmpty())
             {
                 return null;
             }
@@ -77,7 +77,7 @@ namespace Zhaxx.Chi
         /// <remarks>Formula: σ^2 = [ Σ(x - μ)^2 / n ]</remarks>
         public static double? PopulationVariance(IEnumerable<double> data)
         {
-            if (data == null || data.Count() < 2)
+           if (data.IsNullOrLessThanTwo())
             {
                 return null;
             }
@@ -97,7 +97,7 @@ namespace Zhaxx.Chi
         /// <remarks>Formula: σ = Square-root(population-variance)</remarks>
         public static double? PopulationStandardDeviation(IEnumerable<double> data)
         {
-            if (data == null || data.Count() < 2)
+            if (data.IsNullOrLessThanTwo())
             {
                 return null;
             }
@@ -115,7 +115,7 @@ namespace Zhaxx.Chi
         /// <remarks>Formula: s^2 = [ Σ(x - μ)^2 / n - 1 ]</remarks>
         public static double? SampleVariance(IEnumerable<double> data)
         {
-            if (data == null || data.Count() < 2)
+            if (data.IsNullOrLessThanTwo())
             {
                 return null;
             }
@@ -136,7 +136,7 @@ namespace Zhaxx.Chi
         /// <remarks>Formula: s = Square-root(sample-variance)</remarks>
         public static double? SampleStandardDeviation(IEnumerable<double> data)
         {
-            if (data == null || data.Count() < 2)
+            if (data.IsNullOrLessThanTwo())
             {
                 return null;
             }
