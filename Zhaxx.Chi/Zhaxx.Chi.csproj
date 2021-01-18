@@ -2,13 +2,19 @@
 
     <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <Authors>zscruz</Authors>
+    <Description>A simple statistics library.</Description>
+    <Copyright>MIT</Copyright>
+    <Owners>zscruz</Owners>
+    <PackageProjectUrl>https://github.com/zscruz/Chi</PackageProjectUrl>
+    <PackageReleaseNotes>This package contains some common stat functions like Mean, Median, Mode, Population/Sample Variance and Standard Deviation.</PackageReleaseNotes>
+    <Summary>A simple statistics library</Summary>
+    <PackageTags>statistics, stat, math</PackageTags>
+    <Title>Zhaxx.Chi</Title>
     </PropertyGroup>
-    
     <ItemGroup>
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-    <_Parameter1>$(AssemblyName).UnitTests</_Parameter1>
-    </AssemblyAttribute>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+            <_Parameter1>$(AssemblyName).UnitTests</_Parameter1>
+        </AssemblyAttribute>
     </ItemGroup>
- 
-   
 </Project>
