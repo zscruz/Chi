@@ -3,22 +3,19 @@
     <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Authors>zscruz</Authors>
-    <Company />
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Copyright>2021</Copyright>
-    <Description>A simple statistics library for .NET projects</Description>
+    <Description>A simple statistics library.</Description>
+    <Copyright>MIT</Copyright>
+    <Owners>zscruz</Owners>
     <PackageProjectUrl>https://github.com/zscruz/Chi</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/zscruz/Chi</RepositoryUrl>
-    <PackageTags>Statistics Stat Math Chi</PackageTags>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageReleaseNotes>This package contains some common stat functions like Mean, Median, Mode, Population/Sample Variance and Standard Deviation.</PackageReleaseNotes>
+    <Summary>A simple statistics library</Summary>
+    <PackageTags>statistics, stat, math</PackageTags>
+    <Title>Zhaxx.Chi</Title>
     <PackageReleaseNotes>This statistics packages contains functions for calculating the mean, median, mode, sample/population variation, and sample/population standard deviation.</PackageReleaseNotes>
     </PropertyGroup>
-    
     <ItemGroup>
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-    <_Parameter1>$(AssemblyName).UnitTests</_Parameter1>
-    </AssemblyAttribute>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+            <_Parameter1>$(AssemblyName).UnitTests</_Parameter1>
+        </AssemblyAttribute>
     </ItemGroup>
- 
-   
 </Project>
