@@ -1,11 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zhaxx.Chi", "Zhaxx.Chi\Zhaxx.Chi.csproj", "{DFC5DD6A-FC42-40C9-AC5D-279D525EFC19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zhaxx.Chi", "Zhaxx.Chi\Zhaxx.Chi.csproj", "{DFC5DD6A-FC42-40C9-AC5D-279D525EFC19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zhaxx.Chi.UnitTests", "Zhaxx.Chi.UnitTests\Zhaxx.Chi.UnitTests.csproj", "{5132ADD5-AF4B-4E9F-B9CE-1A3ACF640C2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zhaxx.Chi.UnitTests", "Zhaxx.Chi.UnitTests\Zhaxx.Chi.UnitTests.csproj", "{5132ADD5-AF4B-4E9F-B9CE-1A3ACF640C2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{56F4DDAA-E1A1-488C-ABE3-31B95CA6B0F8}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +20,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{DFC5DD6A-FC42-40C9-AC5D-279D525EFC19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -44,5 +46,11 @@ Global
 		{5132ADD5-AF4B-4E9F-B9CE-1A3ACF640C2A}.Release|x64.Build.0 = Release|Any CPU
 		{5132ADD5-AF4B-4E9F-B9CE-1A3ACF640C2A}.Release|x86.ActiveCfg = Release|Any CPU
 		{5132ADD5-AF4B-4E9F-B9CE-1A3ACF640C2A}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2166A9EC-997F-43B2-8F10-C883D7DF3CD1}
 	EndGlobalSection
 EndGlobal

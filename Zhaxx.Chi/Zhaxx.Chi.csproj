@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
+  <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Authors>zscruz</Authors>
     <Description>A simple statistics library.</Description>
@@ -12,10 +12,14 @@
     <PackageTags>statistics, stat, math</PackageTags>
     <Title>Zhaxx.Chi</Title>
     <PackageReleaseNotes>This statistics packages contains functions for calculating the mean, median, mode, sample/population variation, and sample/population standard deviation.</PackageReleaseNotes>
-    </PropertyGroup>
-    <ItemGroup>
-        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-            <_Parameter1>$(AssemblyName).UnitTests</_Parameter1>
-        </AssemblyAttribute>
-    </ItemGroup>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>$(AssemblyName).UnitTests</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
 </Project>
